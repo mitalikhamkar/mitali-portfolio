@@ -624,7 +624,7 @@ function Navbar() {
   return (
     <nav className={scrolled ? "scrolled" : ""}>
       <div className="nav-inner">
-        <a href="#" className="nav-logo">Mitali<span>.</span></a>
+        <a href="https://github.com/mitalikhamkar" className="nav-logo">Mitali<span>.</span></a>
         <button className="hamburger" onClick={() => setMenuOpen(m => !m)} aria-label="Menu">
           <span style={{ transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none" }} />
           <span style={{ opacity: menuOpen ? 0 : 1 }} />
