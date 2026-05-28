@@ -309,7 +309,18 @@ nav.scrolled {
   }
   .nav-links.open { right: 0; }
   .nav-links a { font-size: 13px; }
-  .section { padding: 70px 20px; }
+  .section { padding: 60px 16px; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 12px 16px; }
+  nav.scrolled { padding: 10px 16px; }
+  .nav-inner { justify-content: space-between; }
+  .nav-logo { font-size: 16px; }
+  .nav-links { width: 100%; }
+  .section { padding: 48px 14px; }
+  .btn-primary, .btn-ghost { font-size: 12px; padding: 9px 20px; }
+  .skill-pill { font-size: 11px; padding: 6px 12px; }
 }
 
 /* SKILL PILL */
@@ -351,6 +362,10 @@ nav.scrolled {
 
 /* TILT */
 .tilt-card { transform-style: preserve-3d; transition: transform 0.4s ease; }
+
+@media (max-width: 768px) {
+  .tilt-card { transform-style: flat; }
+}
 
 /* CONTACT INPUT */
 .contact-input {
@@ -464,6 +479,19 @@ nav.scrolled {
 
 /* CGPI bar animation */
 .cgpi-bar { animation: barGrow 1.2s ease both; }
+
+/* RESPONSIVE IMPROVEMENTS */
+@media (max-width: 768px) {
+  body { font-size: 14px; }
+  .section { max-width: 100% !important; }
+  .section-label { font-size: 10px; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 13px; }
+  .hero-grid { opacity: 0.5; }
+  .orb { filter: blur(60px); }
+}
 `;
 
 /* ═══════════════════════════════════════════════════════════
@@ -659,8 +687,13 @@ function DeveloperIllustration() {
         width: "100%", 
         height: "100%", 
         objectFit: "contain",
-        filter: "drop-shadow(0 20px 60px rgba(124,77,255,0.3))"
+        maxWidth: "100%",
+        filter: "drop-shadow(0 20px 60px rgba(124,77,255,0.3))",
+        "@media (max-width: 768px)": {
+          filter: "drop-shadow(0 10px 30px rgba(124,77,255,0.2))"
+        }
       }}
+      loading="lazy"
     />
   );
 }
@@ -744,11 +777,107 @@ function Hero() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          #hero > div > div:last-child { grid-column: 1 / -1; order: 1; max-width: 260px; margin: 0 auto; }
-          #hero > div > div:first-child { grid-column: 1 / -1; order: 2; }
-          #hero > div { grid-template-columns: 1fr !important; gap: 24px !important; padding-top: 96px; }
+        @media (max-width: 1024px) {
+          #hero > div { grid-template-columns: 1fr !important; gap: 36px !important; }
         }
+        @media (max-width: 768px) {
+  #hero {
+    min-height: auto;
+    padding: 90px 0 50px;
+  }
+
+  #hero > div {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding: 0 20px !important;
+    text-align: center;
+  }
+
+  #hero > div > div:last-child {
+    order: 1;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  #hero > div > div:first-child {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #hero p {
+    max-width: 100% !important;
+  }
+
+  #hero > div > div:first-child > div:nth-last-child(2) {
+    justify-content: center;
+  }
+
+  #hero > div > div:first-child > div:last-child {
+    justify-content: center;
+  }
+
+  #hero h1 {
+    font-size: clamp(30px, 8vw, 42px) !important;
+    line-height: 1.2;
+  }
+
+  #hero h2 {
+    font-size: 18px !important;
+  }
+
+  #hero p {
+    font-size: 14px !important;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero {
+    padding: 80px 0 40px;
+  }
+
+  #hero > div {
+    gap: 22px !important;
+    padding: 0 16px !important;
+  }
+
+  #hero > div > div:last-child {
+    max-width: 190px;
+  }
+
+  #hero h1 {
+    font-size: 34px !important;
+  }
+
+  #hero h2 {
+    font-size: 16px !important;
+  }
+
+  #hero p {
+    font-size: 13px !important;
+    margin-bottom: 24px;
+  }
+
+  #hero .btn-primary,
+  #hero .btn-ghost {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+    padding: 12px 16px;
+  }
+
+  #hero > div > div:first-child > div:nth-last-child(2) {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #hero > div > div:first-child > div:last-child {
+    margin-top: 20px;
+  }
+}
       `}</style>
     </section>
   );
@@ -812,7 +941,116 @@ function About() {
           </div>
         </div>
 
-        <style>{`@media(max-width:768px){#about .section > div:last-child{grid-template-columns:1fr!important;gap:32px!important;}}`}</style>
+        <style>{`
+          @media(max-width:1024px){
+            #about .section > div:nth-child(2){grid-template-columns:1fr 1fr!important;gap:40px!important;}
+          }
+          @media(max-width:768px){
+            #about .section > div:nth-child(2){
+              grid-template-columns:1fr!important;
+              gap:24px!important;
+              margin-top: 32px !important;
+            }
+            #about .section > div:nth-child(2) > div:first-child {
+              order: 1;
+            }
+            #about .section > div:nth-child(2) > div:last-child {
+              order: 2;
+              grid-template-columns: 1fr 1fr !important;
+              gap: 14px !important;
+            }
+            #about h2{font-size:clamp(24px, 5vw, 36px)!important;}
+            #about .section > div:nth-child(2) > div:first-child > div:first-child {
+              margin-bottom: 14px !important;
+            }
+            #about .section > div:nth-child(2) > div:first-child > p {
+              font-size: 14px !important;
+              margin-bottom: 11px !important;
+              line-height: 1.6;
+            }
+            #about .section > div:nth-child(2) > div:first-child > p:nth-of-type(3) {
+              margin-bottom: 20px !important;
+            }
+            #about .section > div:nth-child(2) > div:first-child > div:last-child > a {
+              font-size: 12px !important;
+              padding: 8px 16px !important;
+            }
+          }
+          @media(max-width:600px){
+            #about .section > div:nth-child(2){
+              grid-template-columns:1fr!important;
+              gap:18px!important;
+            }
+            #about .section > div:nth-child(2) > div:last-child{
+              grid-template-columns: 1fr !important;
+              gap: 12px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child .reveal {
+              padding: 12px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child > div {
+              padding: 12px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child > div > div:first-child {
+              font-size: 18px !important;
+              margin-bottom: 6px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child > div > div:nth-child(2) {
+              font-size: 11px !important;
+              margin-bottom: 4px !important;
+              font-weight: 600;
+            }
+            #about .section > div:nth-child(2) > div:last-child > div > div:last-child {
+              font-size: 11px !important;
+              line-height: 1.4;
+            }
+            #about .section > div:nth-child(2) > div:first-child {
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+            }
+            #about .section > div:nth-child(2) > div:first-child > p {
+              margin-bottom: 0 !important;
+              font-size: 13px !important;
+            }
+          }
+          @media(max-width:480px){
+            #about .section{padding:40px 14px;}
+            #about .section > div:nth-child(2){
+              gap:16px!important;
+              margin-top: 24px !important;
+            }
+            #about .section > div:nth-child(2) > div:first-child > div:last-child {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+            }
+            #about .section > div:nth-child(2) > div:first-child > div:last-child > a {
+              width: 100% !important;
+              justify-content: center;
+              font-size: 12px !important;
+              padding: 8px 16px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child {
+              grid-template-columns: 1fr !important;
+              gap: 12px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child > div {
+              padding: 12px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child > div > div:first-child {
+              font-size: 16px !important;
+              margin-bottom: 6px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child > div > div:nth-child(2) {
+              font-size: 11px !important;
+              margin-bottom: 4px !important;
+            }
+            #about .section > div:nth-child(2) > div:last-child > div > div:last-child {
+              font-size: 11px !important;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );
@@ -922,7 +1160,25 @@ function Skills() {
           ))}
         </div>
 
-        <style>{`@media(max-width:900px){#skills .section > div:nth-child(2){grid-template-columns:1fr 1fr!important;}}@media(max-width:600px){#skills .section > div:nth-child(2){grid-template-columns:1fr!important;}}`}</style>
+        <style>{`
+          @media(max-width:1200px){
+            #skills .section > div:nth-child(2){grid-template-columns:1fr 1fr 1fr!important;}
+          }
+          @media(max-width:900px){
+            #skills .section > div:nth-child(2){grid-template-columns:1fr 1fr!important;}
+          }
+          @media(max-width:600px){
+            #skills .section > div:nth-child(2){grid-template-columns:1fr!important;}
+            #skills .section > div:nth-child(3){flex-direction:column;align-items:flex-start;}
+            #skills .section > div:nth-child(3) > span{width:calc(50% - 5px);}
+          }
+          @media(max-width:480px){
+            #skills .section{padding:48px 14px;}
+            #skills h2{font-size:clamp(22px, 5vw, 36px)!important;}
+            #skills .section > div:nth-child(2){gap:14px!important;}
+            #skills .section > div:nth-child(3) > span{width:100%;}
+          }
+        `}</style>
       </div>
     </section>
   );
@@ -1065,9 +1321,46 @@ function Projects() {
         </div>
       </div>
       <style>{`
+        @media(max-width:1024px){
+          .project-card > div { grid-template-columns: 220px 1fr !important; }
+        }
         @media(max-width:768px){
           .project-card > div { grid-template-columns: 1fr !important; }
-          .project-card > div > div:first-child { border-right: none !important; border-bottom: 1px solid rgba(124,77,255,0.18); border-radius: 16px 16px 0 0 !important; }
+          .project-card > div > div:first-child { 
+            border-right: none !important; 
+            border-bottom: 1px solid rgba(124,77,255,0.18); 
+            border-radius: 16px 16px 0 0 !important;
+            padding: 24px !important;
+          }
+          .project-card > div > div:last-child {
+            padding: 24px !important;
+          }
+          #projects h2{font-size:clamp(24px, 5vw, 36px)!important;}
+        }
+        @media(max-width:480px){
+          #projects .section{padding:48px 14px;}
+          .project-card > div > div:first-child { 
+            padding: 20px 16px !important;
+          }
+          .project-card > div > div:last-child {
+            padding: 20px 16px !important;
+          }
+          .project-card > div > div:first-child > div:first-child { font-size: 36px; margin-bottom: 10px; }
+          .project-card > div > div:first-child > div:nth-child(2) { font-size: 18px; }
+          .project-card > div > div:first-child > div:nth-child(3) { font-size: 10px; }
+          .project-card > div > div:last-child > p { font-size: 13px !important; }
+          .project-card > div > div:last-child > div:nth-child(2) > div { 
+            grid-template-columns: 1fr !important; 
+            gap: 4px 0 !important;
+          }
+          .project-card > div > div:last-child > div:last-child { 
+            flex-direction: column; 
+            gap: 8px;
+          }
+          .project-card > div > div:last-child > div:last-child > a { 
+            width: 100%; 
+            justify-content: center;
+          }
         }
       `}</style>
     </section>
@@ -1086,7 +1379,7 @@ function Education() {
     { sem: "Sem 3", cgpi: 10.00 },
     { sem: "Sem 4", cgpi: 9.40 },
     { sem: "Sem 5", cgpi: 9.10 },
-    { sem: "Sem 6", cgpi: null },
+    { sem: "Sem 6", cgpi: 9.10 },
   ];
 
   const education = [
@@ -1223,6 +1516,89 @@ function Education() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media(max-width:768px){
+          #education .section{padding:60px 16px;}
+          #education h2{font-size:clamp(24px, 5vw, 36px)!important;}
+          #education > .section > div > div{padding-left:24px;}
+          #education > .section > div > div > div > div:first-child > div > div > div:nth-child(2) > div:last-child{flex-direction:column;align-items:flex-start;gap:8px;}
+          #education .cgpi-bar{animation:barGrow 1.2s ease both;}
+        }
+        @media(max-width:600px){
+          #education > .section > div{padding-left:20px;}
+          #education > .section > div > div > div:first-child > div:first-child{gap:10px;}
+          #education > .section > div > div > div:first-child > div:first-child > span{font-size:20px;}
+          #education > .section > div > div > div:first-child > div:first-child > div > div:first-child{font-size:14px;}
+          #education > .section > div > div > div:first-child > div:first-child > div > div:last-child{font-size:11px;}
+          #education > .section > div > div > div > div:first-child > div > div > div:nth-child(2) > div:first-child{font-size:10px;}
+          #education > .section > div > div > div > div:first-child > div > div > div:nth-child(2) > div:last-child > span:first-child{font-size:10px;}
+          #education > .section > div > div > div > div {
+            padding: 16px 14px !important;
+            margin-bottom: 8px;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > div > div {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 6px !important;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div {
+            padding: 8px 10px !important;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div > div:first-child {
+            font-size: 9px !important;
+            margin-bottom: 4px;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div > div:nth-child(2) {
+            font-size: 16px !important;
+            margin-bottom: 2px;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > p {
+            font-size: 12px !important;
+            margin-top: 10px;
+            line-height: 1.5;
+          }
+        }
+        @media(max-width:480px){
+          #education .section{padding:48px 14px;}
+          #education > .section > div{padding-left:16px;}
+          #education > .section > div > div > div:first-child > div:first-child > div{gap:8px;}
+          #education > .section > div > div > div > div{padding:14px 12px;}
+          #education > .section > div > div > div > div > div:first-child{flex-direction:column;align-items:flex-start;gap:8px;}
+          #education > .section > div > div > div > div > div:first-child > div {
+            gap: 8px;
+          }
+          #education > .section > div > div > div > div > div:first-child > div > div:first-child {
+            font-size: 14px !important;
+            margin-bottom: 2px;
+          }
+          #education > .section > div > div > div > div > div:first-child > div > div:last-child {
+            font-size: 10px !important;
+          }
+          #education > .section > div > div > div > div > div:first-child > div:last-child {
+            gap: 2px;
+            text-align: left;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > div > div {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 6px !important;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div {
+            padding: 8px 10px !important;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div > div:first-child {
+            font-size: 8px !important;
+            margin-bottom: 3px;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div > div:nth-child(2) {
+            font-size: 14px !important;
+            margin-bottom: 1px;
+          }
+          #education > .section > div > div > div > div > div:nth-child(3) > p {
+            font-size: 11px !important;
+            margin-top: 8px;
+            line-height: 1.4;
+          }
+        }
+      `}</style>
     </section>
   );
 }
@@ -1407,7 +1783,25 @@ function Contact() {
           </div>
         </div>
       </div>
-      <style>{`@media(max-width:768px){#contact .section > div:last-child{grid-template-columns:1fr!important;}}`}</style>
+      <style>{`
+        @media(max-width:1024px){
+          #contact .section > div:last-child{grid-template-columns:1fr!important;gap:32px!important;}
+        }
+        @media(max-width:768px){
+          #contact .section{padding:60px 16px;}
+          #contact .section > div:last-child{grid-template-columns:1fr!important;gap:28px!important;}
+          #contact h2{font-size:clamp(24px, 5vw, 36px)!important;}
+          #contact h3{font-size:18px!important;}
+        }
+        @media(max-width:480px){
+          #contact .section{padding:48px 14px;}
+          #contact .section > div:last-child{gap:20px!important;}
+          #contact .section > div:last-child > div:first-child > a{width:100%;}
+          #contact .section > div:last-child > div:last-child > div > div > input,
+          #contact .section > div:last-child > div:last-child > div > div > textarea{font-size:14px;}
+          #contact .section > div:last-child > div:last-child > div > button{font-size:13px;}
+        }
+      `}</style>
     </section>
   );
 }
@@ -1417,33 +1811,48 @@ function Contact() {
 ═══════════════════════════════════════════════════════════ */
 function Footer() {
   return (
-    <footer style={{ position: "relative", zIndex: 2, borderTop: "1px solid rgba(124,77,255,0.09)", padding: "36px 24px" }}>
-      <div style={{ maxWidth: 1160, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 18 }}>
-        <div>
-          <div style={{ fontFamily: "var(--sans)", fontSize: 17, fontWeight: 800, color: "var(--text)", marginBottom: 3, letterSpacing: "-0.01em" }}>
-            Mitali<span style={{ color: "var(--violet-light)" }}>.</span>
+    <>
+      <footer style={{ position: "relative", zIndex: 2, borderTop: "1px solid rgba(124,77,255,0.09)", padding: "36px 24px" }}>
+        <div style={{ maxWidth: 1160, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 18 }}>
+          <div>
+            <div style={{ fontFamily: "var(--sans)", fontSize: 17, fontWeight: 800, color: "var(--text)", marginBottom: 3, letterSpacing: "-0.01em" }}>
+              Mitali<span style={{ color: "var(--violet-light)" }}>.</span>
+            </div>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 10.5, color: "var(--text3)" }}>Aspiring Full-Stack Developer</div>
           </div>
-          <div style={{ fontFamily: "var(--mono)", fontSize: 10.5, color: "var(--text3)" }}>Aspiring Full-Stack Developer</div>
-        </div>
 
-        <div style={{ display: "flex", gap: 10 }}>
-          <a href="https://github.com/mitalikhamkar" target="_blank" rel="noreferrer" className="social-icon" title="GitHub">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/in/mitali-khamkar" target="_blank" rel="noreferrer" className="social-icon" title="LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-        </div>
+          <div style={{ display: "flex", gap: 10 }}>
+            <a href="https://github.com/mitalikhamkar" target="_blank" rel="noreferrer" className="social-icon" title="GitHub">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/mitali-khamkar" target="_blank" rel="noreferrer" className="social-icon" title="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
 
-        <div style={{ fontFamily: "var(--mono)", fontSize: 10.5, color: "var(--text3)" }}>
-          Built with <span style={{ color: "var(--violet-light)" }}>React</span> · Designed with ♥
+          <div style={{ fontFamily: "var(--mono)", fontSize: 10.5, color: "var(--text3)" }}>
+            Built with <span style={{ color: "var(--violet-light)" }}>React</span> · Designed with ♥
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+      <style>{`
+        @media (max-width: 768px) {
+          footer { padding: 28px 16px; }
+          footer > div { flex-direction: column; text-align: center; }
+          footer > div > div:last-child { order: 3; width: 100%; }
+        }
+        @media (max-width: 480px) {
+          footer { padding: 24px 14px; }
+          footer > div > div:first-child > div:first-child { font-size: 15px; }
+          footer > div > div:first-child > div:last-child { font-size: 10px; }
+          footer > div > div:last-child { font-size: 10px; }
+        }
+      `}</style>
+    </>
   );
 }
 
