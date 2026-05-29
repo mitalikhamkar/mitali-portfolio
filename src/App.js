@@ -908,7 +908,7 @@ function About() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "start", marginTop: 48 }}>
           <div>
             <p className="reveal" style={{ color: "var(--text2)", fontSize: 15.5, lineHeight: 1.85, marginBottom: 18 }}>
-              I'm a <span style={{ color: "var(--violet-light)", fontWeight: 600 }}>BSc IT student</span> passionate about building practical real-world web and mobile applications. My journey began with curiosity about how things work — and evolved into a drive to build them.
+              I'm a passionate <span style={{ color: "var(--violet-light)", fontWeight: 600 }}>fresher</span> dedicated to building practical real-world web and mobile applications. My journey began with curiosity about how things work — and evolved into a drive to build them.
             </p>
             <p className="reveal reveal-delay-1" style={{ color: "var(--text2)", fontSize: 15.5, lineHeight: 1.85, marginBottom: 18 }}>
               Passionate about full-stack and mobile app development, I build real-world solutions using modern technologies — from React interfaces to Node.js backends — and continuously improve through hands-on projects.
@@ -1066,42 +1066,42 @@ function Skills() {
       label: "Frontend",
       color: "#7c4dff",
       skills: [
-        { name: "React.js", level: 82 },
-        { name: "React Native", level: 72 },
-        { name: "JavaScript", level: 85 },
-        { name: "HTML", level: 92 },
-        { name: "CSS", level: 88 },
+        { name: "React.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+        { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+        { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+        { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+        { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
       ],
     },
     {
       label: "Backend",
       color: "#5c6bc0",
       skills: [
-        { name: "Node.js", level: 78 },
-        { name: "Express.js", level: 76 },
+        { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
+        { name: "Express.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" },
       ],
     },
     {
       label: "Database",
       color: "#00e5ff",
       skills: [
-        { name: "MongoDB", level: 74 },
+        { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
       ],
     },
     {
       label: "Academic Knowledge",
       color: "#e91e8c",
       skills: [
-        { name: "SQL", level: 70 },
-        { name: "C++", level: 78 },
+        { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
+        { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" },
       ],
     },
     {
       label: "Tools",
       color: "#00e676",
       skills: [
-        { name: "Git", level: 80 },
-        { name: "GitHub", level: 82 },
+        { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
+        { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" },
       ],
     },
   ];
@@ -1132,20 +1132,14 @@ function Skills() {
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   {cat.skills.map(skill => (
-                    <div key={skill.name}>
-                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
-                        <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--text2)" }}>{skill.name}</span>
-                        <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: cat.color }}>{skill.level}%</span>
-                      </div>
-                      <div style={{ height: 4, background: "rgba(255,255,255,0.05)", borderRadius: 4, overflow: "hidden" }}>
-                        <div className="cgpi-bar" style={{
-                          height: "100%",
-                          width: `${skill.level}%`,
-                          background: `linear-gradient(90deg, ${cat.color}, ${cat.color}88)`,
-                          borderRadius: 4,
-                          boxShadow: `0 0 7px ${cat.color}45`,
-                        }} />
-                      </div>
+                    <div key={skill.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                      <img 
+                        src={skill.logo} 
+                        alt={skill.name}
+                        style={{ width: 48, height: 48, objectFit: "contain", filter: "brightness(0.95)" }}
+                        onError={(e) => { e.target.style.filter = "brightness(1.2)"; }}
+                      />
+                      <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--text2)", textAlign: "center" }}>{skill.name}</span>
                     </div>
                   ))}
                 </div>
