@@ -33,6 +33,7 @@ const GLOBAL_CSS = `
 html { scroll-behavior: smooth; }
 
 body {
+  visibility: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
@@ -684,19 +685,24 @@ function Navbar() {
    Any decent photo works — crop to roughly square first.
 ═══════════════════════════════════════════════════════════ */
 function DeveloperPhoto() {
+  const [src, setSrc] = useState("/mitali-photo.jpeg");
   return (
     <img
-      src="/mitali-photo.jpg"
+      src={src}
       alt="Mitali Khamkar — Full-Stack Developer"
       style={{
         width: "100%",
         height: "100%",
         objectFit: "cover",
+        objectPosition: "center top",
         borderRadius: "50%",
         maxWidth: "100%",
-        filter: "drop-shadow(0 20px 60px rgba(124,77,255,0.3))",
       }}
-      loading="lazy"
+      onError={() => {
+        // Try .jpg if .jpeg fails
+        if (src === "/mitali-photo.jpeg") setSrc("/mitali-photo.jpg");
+      }}
+      loading="eager"
     />
   );
 }
@@ -1509,12 +1515,21 @@ export default function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    // Inject global CSS immediately and synchronously before paint
     const style = document.createElement("style");
+    style.id = "portfolio-global-css";
     style.textContent = GLOBAL_CSS;
-    document.head.appendChild(style);
+    // Prepend so it applies before any other styles
+    document.head.insertBefore(style, document.head.firstChild);
+    // Reveal body — prevents FOUC
+    document.body.style.visibility = "visible";
     document.title = "Mitali Khamkar — Full-Stack Developer";
-    const t = setTimeout(() => setLoaded(true), 1600);
-    return () => { clearTimeout(t); document.head.removeChild(style); };
+    const t = setTimeout(() => setLoaded(true), 900);
+    return () => {
+      clearTimeout(t);
+      const el = document.getElementById("portfolio-global-css");
+      if (el) el.remove();
+    };
   }, []);
 
   return (
