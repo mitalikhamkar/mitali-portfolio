@@ -1121,30 +1121,29 @@ function Skills() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-          {categories.map((cat, ci) => (
-            <TiltCard key={cat.label}>
-              <div className={`reveal reveal-delay-${(ci % 3) + 1}`}
-                style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(124,77,255,0.1)", borderRadius: 14, padding: 26, height: "100%" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 22 }}>
-                  <div style={{ width: 4, height: 22, borderRadius: 2, background: cat.color, boxShadow: `0 0 10px ${cat.color}` }} />
-                  <span style={{ fontFamily: "var(--sans)", fontWeight: 700, fontSize: 14.5, color: "var(--text)" }}>{cat.label}</span>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  {cat.skills.map(skill => (
-                    <div key={skill.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+          {categories.map((cat) => (
+            <div key={cat.label} className="reveal" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                <div style={{ width: 4, height: 28, borderRadius: 2, background: cat.color, boxShadow: `0 0 12px ${cat.color}` }} />
+                <span style={{ fontFamily: "var(--sans)", fontWeight: 700, fontSize: 18, color: "var(--text)" }}>{cat.label}</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 24, paddingLeft: 16 }}>
+                {cat.skills.map((skill) => (
+                  <div key={skill.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, transition: "transform 0.3s ease", cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-6px)"} onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}>
+                    <div style={{ padding: 12, background: "rgba(124,77,255,0.06)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <img 
                         src={skill.logo} 
                         alt={skill.name}
-                        style={{ width: 48, height: 48, objectFit: "contain", filter: "brightness(0.95)" }}
-                        onError={(e) => { e.target.style.filter = "brightness(1.2)"; }}
+                        style={{ width: 52, height: 52, objectFit: "contain", filter: "brightness(1)" }}
+                        onError={(e) => { e.target.style.filter = "brightness(1.3)"; }}
                       />
-                      <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--text2)", textAlign: "center" }}>{skill.name}</span>
                     </div>
-                  ))}
-                </div>
+                    <span style={{ fontFamily: "var(--mono)", fontSize: 13, color: "var(--text2)", textAlign: "center", fontWeight: 500 }}>{skill.name}</span>
+                  </div>
+                ))}
               </div>
-            </TiltCard>
+            </div>
           ))}
         </div>
 
@@ -1156,20 +1155,20 @@ function Skills() {
 
         <style>{`
           @media(max-width:1200px){
-            #skills .section > div:nth-child(2){grid-template-columns:1fr 1fr 1fr!important;}
+            #skills .section > div:nth-child(2) > div { gap: 40px !important; }
           }
-          @media(max-width:900px){
-            #skills .section > div:nth-child(2){grid-template-columns:1fr 1fr!important;}
+          @media(max-width:768px){
+            #skills .section > div:nth-child(2) > div > div:nth-child(2) { gridTemplateColumns: repeat(auto-fit, minmax(80px, 1fr)) !important; gap: 16px !important; }
           }
           @media(max-width:600px){
-            #skills .section > div:nth-child(2){grid-template-columns:1fr!important;}
+            #skills .section > div:nth-child(2) > div > div:nth-child(2) { gridTemplateColumns: repeat(3, 1fr) !important; gap: 12px !important; }
             #skills .section > div:nth-child(3){flex-direction:column;align-items:flex-start;}
             #skills .section > div:nth-child(3) > span{width:calc(50% - 5px);}
           }
           @media(max-width:480px){
             #skills .section{padding:48px 14px;}
             #skills h2{font-size:clamp(22px, 5vw, 36px)!important;}
-            #skills .section > div:nth-child(2){gap:14px!important;}
+            #skills .section > div:nth-child(2) > div > div:nth-child(2) { gridTemplateColumns: repeat(2, 1fr) !important; gap: 12px !important; }
             #skills .section > div:nth-child(3) > span{width:100%;}
           }
         `}</style>
