@@ -493,6 +493,34 @@ nav.scrolled {
   .hero-grid { opacity: 0.5; }
   .orb { filter: blur(60px); }
 }
+
+/* ─── HERO PHOTO CIRCLE ─── */
+.photo-circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(124,77,255,0.35);
+  box-shadow: 0 0 40px rgba(124,77,255,0.2), 0 0 80px rgba(92,107,192,0.1);
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Face is ~30% from top in the 780x1040 portrait photo */
+  object-position: center 18%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .photo-circle { width: 200px; height: 200px; }
+}
+@media (max-width: 480px) {
+  .photo-circle { width: 160px; height: 160px; }
+}
 `;
 
 /* ═══════════════════════════════════════════════════════════
@@ -679,32 +707,22 @@ function Navbar() {
 /* ═══════════════════════════════════════════════════════════
    DEVELOPER PHOTO
    ─────────────────────────────────────────────────────────
-   ACTION REQUIRED: Add your real photo to the public folder.
-   Name it exactly: mitali-photo.jpg
-   Path will be: public/mitali-photo.jpg
-   Any decent photo works — crop to roughly square first.
+   Photo is 780×1040 portrait. Face center is ~30% from top.
+   object-position: center 18% pulls the face into the circle.
 ═══════════════════════════════════════════════════════════ */
 function DeveloperPhoto() {
   const [src, setSrc] = useState("/mitali-photo.jpeg");
   return (
-    <img
-      src={src}
-      alt="Mitali Khamkar — Full-Stack Developer"
-      style={{
-        width: "140%",
-        height: "140%",
-        objectFit: "cover",
-        objectPosition: "center 15%",
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -38%)",
-      }}
-      onError={() => {
-        if (src === "/mitali-photo.jpeg") setSrc("/mitali-photo.jpg");
-      }}
-      loading="eager"
-    />
+    <div className="photo-circle">
+      <img
+        src={src}
+        alt="Mitali Khamkar — Full-Stack Developer"
+        onError={() => {
+          if (src === "/mitali-photo.jpeg") setSrc("/mitali-photo.jpg");
+        }}
+        loading="eager"
+      />
+    </div>
   );
 }
 
@@ -731,7 +749,6 @@ function Hero() {
             <span className="gradient-text">Mitali Khamkar.</span>
           </h1>
 
-          {/* ✅ CHANGE 1: Removed "Aspiring" */}
           <h2 style={{ fontFamily: "var(--sans)", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 400, color: "var(--text2)", marginBottom: 28, letterSpacing: "0.01em" }}>
             Full-Stack Developer
           </h2>
@@ -771,19 +788,8 @@ function Hero() {
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 340, height: 340, borderRadius: "50%", background: "radial-gradient(circle, rgba(92,107,192,0.12) 0%, transparent 68%)", pointerEvents: "none" }} />
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 370, height: 370, borderRadius: "50%", border: "1px dashed rgba(124,77,255,0.18)", animation: "spin-slow 22s linear infinite" }} />
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 410, height: 410, borderRadius: "50%", border: "1px dashed rgba(92,107,192,0.1)", animation: "spin-reverse 32s linear infinite" }} />
-            {/* Photo container — circular frame */}
-            <div style={{
-              width: 300,
-              height: 300,
-              borderRadius: "50%",
-              overflow: "hidden",
-              border: "2px solid rgba(124,77,255,0.35)",
-              boxShadow: "0 0 40px rgba(124,77,255,0.2), 0 0 80px rgba(92,107,192,0.1)",
-              position: "relative",
-              zIndex: 2,
-            }}>
-              <DeveloperPhoto />
-            </div>
+            {/* Photo — using .photo-circle CSS class for clean responsive sizing */}
+            <DeveloperPhoto />
           </div>
         </div>
       </div>
@@ -801,7 +807,7 @@ function Hero() {
         @media (max-width: 768px) {
           #hero { min-height: auto; padding: 90px 0 50px; }
           #hero > div { grid-template-columns: 1fr !important; gap: 28px !important; padding: 0 20px !important; text-align: center; }
-          #hero > div > div:last-child { order: 1; max-width: 200px; margin: 0 auto; }
+          #hero > div > div:last-child { order: 1; margin: 0 auto; }
           #hero > div > div:first-child { order: 2; display: flex; flex-direction: column; align-items: center; }
           #hero p { max-width: 100% !important; }
           #hero > div > div:first-child > div:nth-last-child(2) { justify-content: center; }
@@ -809,18 +815,24 @@ function Hero() {
           #hero h1 { font-size: clamp(30px, 8vw, 42px) !important; line-height: 1.2; }
           #hero h2 { font-size: 18px !important; }
           #hero p { font-size: 14px !important; line-height: 1.7; }
+          /* Scale down the decorative rings on mobile */
+          #hero > div > div:last-child > div > div:nth-child(1) { width: 220px !important; height: 220px !important; }
+          #hero > div > div:last-child > div > div:nth-child(2) { width: 240px !important; height: 240px !important; }
+          #hero > div > div:last-child > div > div:nth-child(3) { width: 260px !important; height: 260px !important; }
         }
         @media (max-width: 480px) {
           #hero { padding: 80px 0 40px; }
           #hero > div { gap: 22px !important; padding: 0 16px !important; }
-          #hero > div > div:last-child { max-width: 160px; }
-          #hero > div > div:last-child > div > div:nth-child(4) { width: 160px !important; height: 160px !important; }
           #hero h1 { font-size: 34px !important; }
           #hero h2 { font-size: 16px !important; }
           #hero p { font-size: 13px !important; margin-bottom: 24px; }
           #hero .btn-primary, #hero .btn-ghost { width: 100%; justify-content: center; font-size: 13px; padding: 12px 16px; }
           #hero > div > div:first-child > div:nth-last-child(2) { width: 100%; flex-direction: column; gap: 12px; }
           #hero > div > div:first-child > div:last-child { margin-top: 20px; }
+          /* Scale rings to match 160px photo */
+          #hero > div > div:last-child > div > div:nth-child(1) { width: 180px !important; height: 180px !important; }
+          #hero > div > div:last-child > div > div:nth-child(2) { width: 196px !important; height: 196px !important; }
+          #hero > div > div:last-child > div > div:nth-child(3) { width: 212px !important; height: 212px !important; }
         }
       `}</style>
     </section>
@@ -1010,7 +1022,6 @@ function Projects() {
       badge: "Mobile",
       badgeColor: "#7c4dff",
       icon: "👔",
-      /* ✅ ACTION: Add a screenshot of the Glamware app UI to public/glamware-screenshot.png */
       screenshot: "/glamware-screenshot.png",
       desc: "Glamware is a mobile application that allows users to create a digital wardrobe, upload their clothing items, and style outfits virtually using a 3D avatar.",
       tags: ["React Native", "Mobile", "Android", "UI/UX"],
@@ -1029,7 +1040,6 @@ function Projects() {
       badge: "Live",
       badgeColor: "#00e676",
       icon: "🍳",
-      /* ✅ ACTION: Take a screenshot of culina-xi.vercel.app and save to public/culina-screenshot.png */
       screenshot: "/culina-screenshot.png",
       desc: "Culina is a full-stack recipe web application where users can explore delicious recipes with beautiful food images, search dishes, and enjoy a clean modern cooking experience.",
       tags: ["React.js", "Node.js", "MongoDB", "Express.js", "REST API"],
@@ -1096,7 +1106,6 @@ function Projects() {
 
                   {/* Right content */}
                   <div style={{ padding: "32px 28px" }}>
-                    {/* ✅ CHANGE 4: Screenshot preview */}
                     {p.screenshot && (
                       <div style={{ marginBottom: 20, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(124,77,255,0.15)", maxHeight: 180 }}>
                         <img
@@ -1365,7 +1374,6 @@ function Contact() {
         </svg>
       ),
       label: "Phone",
-      /* ✅ CHANGE 5: Fixed phone number — removed square brackets */
       value: "8850752240",
       url: "tel:+918850752240",
     },
@@ -1438,7 +1446,6 @@ function Contact() {
                       <label style={{ display: "block", fontFamily: "var(--mono)", fontSize: 10, color: "var(--text3)", marginBottom: 7, letterSpacing: "0.12em" }}>MESSAGE</label>
                       <textarea className="contact-input" rows={5} placeholder="Tell me about your opportunity or project..." value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
                     </div>
-                    {/* ✅ CHANGE 3: Removed EmailJS debug footer line completely */}
                     <button className="btn-primary" onClick={handleSubmit} disabled={status === "sending"}
                       style={{ width: "100%", justifyContent: "center", opacity: status === "sending" ? 0.7 : 1, cursor: status === "sending" ? "wait" : "pointer" }}>
                       {status === "sending" ? "Sending…" : "Send Message →"}
@@ -1479,7 +1486,6 @@ function Footer() {
             <div style={{ fontFamily: "var(--sans)", fontSize: 17, fontWeight: 800, color: "var(--text)", marginBottom: 3, letterSpacing: "-0.01em" }}>
               Mitali<span style={{ color: "var(--violet-light)" }}>.</span>
             </div>
-            {/* ✅ CHANGE 1 (footer): Removed "Aspiring" */}
             <div style={{ fontFamily: "var(--mono)", fontSize: 10.5, color: "var(--text3)" }}>Full-Stack Developer</div>
           </div>
 
@@ -1516,13 +1522,10 @@ export default function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Inject global CSS immediately and synchronously before paint
     const style = document.createElement("style");
     style.id = "portfolio-global-css";
     style.textContent = GLOBAL_CSS;
-    // Prepend so it applies before any other styles
     document.head.insertBefore(style, document.head.firstChild);
-    // Reveal body — prevents FOUC
     document.body.style.visibility = "visible";
     document.title = "Mitali Khamkar — Full-Stack Developer";
     const t = setTimeout(() => setLoaded(true), 900);
