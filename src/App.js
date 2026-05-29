@@ -676,22 +676,25 @@ function Navbar() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   DEVELOPER ILLUSTRATION — Professional 3D Avatar
+   DEVELOPER PHOTO
+   ─────────────────────────────────────────────────────────
+   ACTION REQUIRED: Add your real photo to the public folder.
+   Name it exactly: mitali-photo.jpg
+   Path will be: public/mitali-photo.jpg
+   Any decent photo works — crop to roughly square first.
 ═══════════════════════════════════════════════════════════ */
-function DeveloperIllustration() {
+function DeveloperPhoto() {
   return (
-    <img 
-      src="/Use AI Image May 27, 2026, 12_23_03.png"
-      alt="Mitali - Developer"
-      style={{ 
-        width: "100%", 
-        height: "100%", 
-        objectFit: "contain",
+    <img
+      src="/mitali-photo.jpg"
+      alt="Mitali Khamkar — Full-Stack Developer"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        borderRadius: "50%",
         maxWidth: "100%",
         filter: "drop-shadow(0 20px 60px rgba(124,77,255,0.3))",
-        "@media (max-width: 768px)": {
-          filter: "drop-shadow(0 10px 30px rgba(124,77,255,0.2))"
-        }
       }}
       loading="lazy"
     />
@@ -721,8 +724,9 @@ function Hero() {
             <span className="gradient-text">Mitali Khamkar.</span>
           </h1>
 
+          {/* ✅ CHANGE 1: Removed "Aspiring" */}
           <h2 style={{ fontFamily: "var(--sans)", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 400, color: "var(--text2)", marginBottom: 28, letterSpacing: "0.01em" }}>
-            Aspiring Full-Stack Developer
+            Full-Stack Developer
           </h2>
 
           <p style={{ color: "var(--text3)", fontSize: "clamp(14px, 1.4vw, 15.5px)", lineHeight: 1.8, maxWidth: 460, marginBottom: 40 }}>
@@ -734,17 +738,11 @@ function Hero() {
               onClick={e => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }}>
               View Projects →
             </a>
-            {/* 
-              ↓ RESUME DOWNLOAD
-              Place your resume at: public/Mitali_Khamkar_Resume.pdf
-              It will be accessible via process.env.PUBLIC_URL or just "/Mitali_Khamkar_Resume.pdf"
-            */}
             <a href="/Mitali_Khamkar_Resume.pdf" download="Mitali_Khamkar_Resume.pdf" className="btn-ghost">
               ↓ Download Resume
             </a>
           </div>
 
-          {/* Social links — GitHub & LinkedIn only */}
           <div style={{ display: "flex", gap: 12, marginTop: 36 }}>
             <a href="https://github.com/mitalikhamkar" target="_blank" rel="noreferrer" className="social-icon" title="GitHub">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -759,13 +757,26 @@ function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: Illustration */}
+        {/* RIGHT: Real Photo */}
         <div style={{ position: "relative", animation: "fadeIn 1.1s ease both 0.3s" }}>
-          <div className="animate-float" style={{ position: "relative", zIndex: 1 }}>
+          <div className="animate-float" style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {/* Decorative rings */}
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 340, height: 340, borderRadius: "50%", background: "radial-gradient(circle, rgba(92,107,192,0.12) 0%, transparent 68%)", pointerEvents: "none" }} />
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 370, height: 370, borderRadius: "50%", border: "1px dashed rgba(124,77,255,0.18)", animation: "spin-slow 22s linear infinite" }} />
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 410, height: 410, borderRadius: "50%", border: "1px dashed rgba(92,107,192,0.1)", animation: "spin-reverse 32s linear infinite" }} />
-            <DeveloperIllustration />
+            {/* Photo container — circular frame */}
+            <div style={{
+              width: 300,
+              height: 300,
+              borderRadius: "50%",
+              overflow: "hidden",
+              border: "2px solid rgba(124,77,255,0.35)",
+              boxShadow: "0 0 40px rgba(124,77,255,0.2), 0 0 80px rgba(92,107,192,0.1)",
+              position: "relative",
+              zIndex: 2,
+            }}>
+              <DeveloperPhoto />
+            </div>
           </div>
         </div>
       </div>
@@ -781,103 +792,29 @@ function Hero() {
           #hero > div { grid-template-columns: 1fr !important; gap: 36px !important; }
         }
         @media (max-width: 768px) {
-  #hero {
-    min-height: auto;
-    padding: 90px 0 50px;
-  }
-
-  #hero > div {
-    grid-template-columns: 1fr !important;
-    gap: 28px !important;
-    padding: 0 20px !important;
-    text-align: center;
-  }
-
-  #hero > div > div:last-child {
-    order: 1;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  #hero > div > div:first-child {
-    order: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #hero p {
-    max-width: 100% !important;
-  }
-
-  #hero > div > div:first-child > div:nth-last-child(2) {
-    justify-content: center;
-  }
-
-  #hero > div > div:first-child > div:last-child {
-    justify-content: center;
-  }
-
-  #hero h1 {
-    font-size: clamp(30px, 8vw, 42px) !important;
-    line-height: 1.2;
-  }
-
-  #hero h2 {
-    font-size: 18px !important;
-  }
-
-  #hero p {
-    font-size: 14px !important;
-    line-height: 1.7;
-  }
-}
-
-@media (max-width: 480px) {
-  #hero {
-    padding: 80px 0 40px;
-  }
-
-  #hero > div {
-    gap: 22px !important;
-    padding: 0 16px !important;
-  }
-
-  #hero > div > div:last-child {
-    max-width: 190px;
-  }
-
-  #hero h1 {
-    font-size: 34px !important;
-  }
-
-  #hero h2 {
-    font-size: 16px !important;
-  }
-
-  #hero p {
-    font-size: 13px !important;
-    margin-bottom: 24px;
-  }
-
-  #hero .btn-primary,
-  #hero .btn-ghost {
-    width: 100%;
-    justify-content: center;
-    font-size: 13px;
-    padding: 12px 16px;
-  }
-
-  #hero > div > div:first-child > div:nth-last-child(2) {
-    width: 100%;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  #hero > div > div:first-child > div:last-child {
-    margin-top: 20px;
-  }
-}
+          #hero { min-height: auto; padding: 90px 0 50px; }
+          #hero > div { grid-template-columns: 1fr !important; gap: 28px !important; padding: 0 20px !important; text-align: center; }
+          #hero > div > div:last-child { order: 1; max-width: 200px; margin: 0 auto; }
+          #hero > div > div:first-child { order: 2; display: flex; flex-direction: column; align-items: center; }
+          #hero p { max-width: 100% !important; }
+          #hero > div > div:first-child > div:nth-last-child(2) { justify-content: center; }
+          #hero > div > div:first-child > div:last-child { justify-content: center; }
+          #hero h1 { font-size: clamp(30px, 8vw, 42px) !important; line-height: 1.2; }
+          #hero h2 { font-size: 18px !important; }
+          #hero p { font-size: 14px !important; line-height: 1.7; }
+        }
+        @media (max-width: 480px) {
+          #hero { padding: 80px 0 40px; }
+          #hero > div { gap: 22px !important; padding: 0 16px !important; }
+          #hero > div > div:last-child { max-width: 160px; }
+          #hero > div > div:last-child > div > div:nth-child(4) { width: 160px !important; height: 160px !important; }
+          #hero h1 { font-size: 34px !important; }
+          #hero h2 { font-size: 16px !important; }
+          #hero p { font-size: 13px !important; margin-bottom: 24px; }
+          #hero .btn-primary, #hero .btn-ghost { width: 100%; justify-content: center; font-size: 13px; padding: 12px 16px; }
+          #hero > div > div:first-child > div:nth-last-child(2) { width: 100%; flex-direction: column; gap: 12px; }
+          #hero > div > div:first-child > div:last-child { margin-top: 20px; }
+        }
       `}</style>
     </section>
   );
@@ -918,12 +855,8 @@ function About() {
             </p>
 
             <div className="reveal reveal-delay-3" style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a href="https://github.com/mitalikhamkar" target="_blank" rel="noreferrer" className="btn-primary">
-                GitHub ↗
-              </a>
-              <a href="https://www.linkedin.com/in/mitali-khamkar" target="_blank" rel="noreferrer" className="btn-ghost">
-                LinkedIn ↗
-              </a>
+              <a href="https://github.com/mitalikhamkar" target="_blank" rel="noreferrer" className="btn-primary">GitHub ↗</a>
+              <a href="https://www.linkedin.com/in/mitali-khamkar" target="_blank" rel="noreferrer" className="btn-ghost">LinkedIn ↗</a>
             </div>
           </div>
 
@@ -942,113 +875,15 @@ function About() {
         </div>
 
         <style>{`
-          @media(max-width:1024px){
-            #about .section > div:nth-child(2){grid-template-columns:1fr 1fr!important;gap:40px!important;}
-          }
+          @media(max-width:1024px){ #about .section > div:nth-child(2){grid-template-columns:1fr 1fr!important;gap:40px!important;} }
           @media(max-width:768px){
-            #about .section > div:nth-child(2){
-              grid-template-columns:1fr!important;
-              gap:24px!important;
-              margin-top: 32px !important;
-            }
-            #about .section > div:nth-child(2) > div:first-child {
-              order: 1;
-            }
-            #about .section > div:nth-child(2) > div:last-child {
-              order: 2;
-              grid-template-columns: 1fr 1fr !important;
-              gap: 14px !important;
-            }
+            #about .section > div:nth-child(2){grid-template-columns:1fr!important;gap:24px!important;margin-top: 32px !important;}
             #about h2{font-size:clamp(24px, 5vw, 36px)!important;}
-            #about .section > div:nth-child(2) > div:first-child > div:first-child {
-              margin-bottom: 14px !important;
-            }
-            #about .section > div:nth-child(2) > div:first-child > p {
-              font-size: 14px !important;
-              margin-bottom: 11px !important;
-              line-height: 1.6;
-            }
-            #about .section > div:nth-child(2) > div:first-child > p:nth-of-type(3) {
-              margin-bottom: 20px !important;
-            }
-            #about .section > div:nth-child(2) > div:first-child > div:last-child > a {
-              font-size: 12px !important;
-              padding: 8px 16px !important;
-            }
-          }
-          @media(max-width:600px){
-            #about .section > div:nth-child(2){
-              grid-template-columns:1fr!important;
-              gap:18px!important;
-            }
-            #about .section > div:nth-child(2) > div:last-child{
-              grid-template-columns: 1fr !important;
-              gap: 12px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child .reveal {
-              padding: 12px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child > div {
-              padding: 12px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child > div > div:first-child {
-              font-size: 18px !important;
-              margin-bottom: 6px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child > div > div:nth-child(2) {
-              font-size: 11px !important;
-              margin-bottom: 4px !important;
-              font-weight: 600;
-            }
-            #about .section > div:nth-child(2) > div:last-child > div > div:last-child {
-              font-size: 11px !important;
-              line-height: 1.4;
-            }
-            #about .section > div:nth-child(2) > div:first-child {
-              display: flex;
-              flex-direction: column;
-              gap: 12px;
-            }
-            #about .section > div:nth-child(2) > div:first-child > p {
-              margin-bottom: 0 !important;
-              font-size: 13px !important;
-            }
+            #about .section > div:nth-child(2) > div:first-child > p{font-size:14px!important;margin-bottom:11px!important;line-height:1.6;}
           }
           @media(max-width:480px){
             #about .section{padding:40px 14px;}
-            #about .section > div:nth-child(2){
-              gap:16px!important;
-              margin-top: 24px !important;
-            }
-            #about .section > div:nth-child(2) > div:first-child > div:last-child {
-              display: flex;
-              flex-direction: column;
-              gap: 10px;
-            }
-            #about .section > div:nth-child(2) > div:first-child > div:last-child > a {
-              width: 100% !important;
-              justify-content: center;
-              font-size: 12px !important;
-              padding: 8px 16px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child {
-              grid-template-columns: 1fr !important;
-              gap: 12px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child > div {
-              padding: 12px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child > div > div:first-child {
-              font-size: 16px !important;
-              margin-bottom: 6px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child > div > div:nth-child(2) {
-              font-size: 11px !important;
-              margin-bottom: 4px !important;
-            }
-            #about .section > div:nth-child(2) > div:last-child > div > div:last-child {
-              font-size: 11px !important;
-            }
+            #about .section > div:nth-child(2) > div:last-child{grid-template-columns:1fr!important;gap:12px!important;}
           }
         `}</style>
       </div>
@@ -1130,14 +965,11 @@ function Skills() {
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 24, paddingLeft: 16 }}>
                 {cat.skills.map((skill) => (
-                  <div key={skill.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, transition: "transform 0.3s ease", cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-6px)"} onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}>
+                  <div key={skill.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, transition: "transform 0.3s ease", cursor: "pointer" }}
+                    onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-6px)"}
+                    onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}>
                     <div style={{ padding: 12, background: "rgba(124,77,255,0.06)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <img 
-                        src={skill.logo} 
-                        alt={skill.name}
-                        style={{ width: 52, height: 52, objectFit: "contain", filter: "brightness(1)" }}
-                        onError={(e) => { e.target.style.filter = "brightness(1.3)"; }}
-                      />
+                      <img src={skill.logo} alt={skill.name} style={{ width: 52, height: 52, objectFit: "contain" }} />
                     </div>
                     <span style={{ fontFamily: "var(--mono)", fontSize: 13, color: "var(--text2)", textAlign: "center", fontWeight: 500 }}>{skill.name}</span>
                   </div>
@@ -1152,26 +984,6 @@ function Skills() {
             <span key={s} className="skill-pill">{s}</span>
           ))}
         </div>
-
-        <style>{`
-          @media(max-width:1200px){
-            #skills .section > div:nth-child(2) > div { gap: 40px !important; }
-          }
-          @media(max-width:768px){
-            #skills .section > div:nth-child(2) > div > div:nth-child(2) { gridTemplateColumns: repeat(auto-fit, minmax(80px, 1fr)) !important; gap: 16px !important; }
-          }
-          @media(max-width:600px){
-            #skills .section > div:nth-child(2) > div > div:nth-child(2) { gridTemplateColumns: repeat(3, 1fr) !important; gap: 12px !important; }
-            #skills .section > div:nth-child(3){flex-direction:column;align-items:flex-start;}
-            #skills .section > div:nth-child(3) > span{width:calc(50% - 5px);}
-          }
-          @media(max-width:480px){
-            #skills .section{padding:48px 14px;}
-            #skills h2{font-size:clamp(22px, 5vw, 36px)!important;}
-            #skills .section > div:nth-child(2) > div > div:nth-child(2) { gridTemplateColumns: repeat(2, 1fr) !important; gap: 12px !important; }
-            #skills .section > div:nth-child(3) > span{width:100%;}
-          }
-        `}</style>
       </div>
     </section>
   );
@@ -1191,15 +1003,12 @@ function Projects() {
       badge: "Mobile",
       badgeColor: "#7c4dff",
       icon: "👔",
+      /* ✅ ACTION: Add a screenshot of the Glamware app UI to public/glamware-screenshot.png */
+      screenshot: "/glamware-screenshot.png",
       desc: "Glamware is a mobile application that allows users to create a digital wardrobe, upload their clothing items, and style outfits virtually using a 3D avatar.",
       tags: ["React Native", "Mobile", "Android", "UI/UX"],
       highlights: ["Avatar Creation", "Avatar Customization", "3D Cloth storing", "Styling clothes on Avatar"],
       links: [
-        /*
-          ↓ APK DOWNLOAD
-          Place your APK at: public/Glamware.apk
-          It will be accessible via "/Glamware.apk"
-        */
         { label: "APK Download", icon: "↓", url: "https://drive.google.com/file/d/13FktusnJyjwBuCW7rIHNEMRoeptUEWVV/view?usp=drive_link", primary: true, download: "Glamware.apk" },
         { label: "GitHub", icon: "⌨", url: "https://github.com/mitalikhamkar/Glamware-app" },
       ],
@@ -1213,6 +1022,8 @@ function Projects() {
       badge: "Live",
       badgeColor: "#00e676",
       icon: "🍳",
+      /* ✅ ACTION: Take a screenshot of culina-xi.vercel.app and save to public/culina-screenshot.png */
+      screenshot: "/culina-screenshot.png",
       desc: "Culina is a full-stack recipe web application where users can explore delicious recipes with beautiful food images, search dishes, and enjoy a clean modern cooking experience.",
       tags: ["React.js", "Node.js", "MongoDB", "Express.js", "REST API"],
       highlights: ["MERN stack", "Live deployment", "Responsive UI", "Recipe discovery"],
@@ -1230,6 +1041,7 @@ function Projects() {
       badge: "Architecture",
       badgeColor: "#e91e8c",
       icon: "⚙️",
+      screenshot: null,
       desc: "A modular, scalable backend system for validation, classification, and action-triggered lead processing. Built with Node.js and Express, showcasing clean architecture and engineering discipline.",
       tags: ["Node.js", "Express.js", "MongoDB", "REST API", "Middleware"],
       highlights: ["Modular architecture", "Lead classification", "Action triggers", "Scalable design"],
@@ -1277,6 +1089,18 @@ function Projects() {
 
                   {/* Right content */}
                   <div style={{ padding: "32px 28px" }}>
+                    {/* ✅ CHANGE 4: Screenshot preview */}
+                    {p.screenshot && (
+                      <div style={{ marginBottom: 20, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(124,77,255,0.15)", maxHeight: 180 }}>
+                        <img
+                          src={p.screenshot}
+                          alt={`${p.title} screenshot`}
+                          style={{ width: "100%", display: "block", objectFit: "cover", maxHeight: 180 }}
+                          onError={(e) => { e.target.parentElement.style.display = "none"; }}
+                        />
+                      </div>
+                    )}
+
                     <p style={{ color: "var(--text2)", fontSize: 14.5, lineHeight: 1.78, marginBottom: 22 }}>{p.desc}</p>
 
                     <div style={{ marginBottom: 22 }}>
@@ -1300,8 +1124,7 @@ function Projects() {
                       {p.links.map(l => (
                         l.primary
                           ? <a key={l.label} href={l.url} target={l.download ? "_self" : "_blank"} rel="noreferrer"
-                              download={l.download || undefined}
-                              className="btn-primary">{l.icon} {l.label}</a>
+                              download={l.download || undefined} className="btn-primary">{l.icon} {l.label}</a>
                           : <a key={l.label} href={l.url} target="_blank" rel="noreferrer"
                               className="btn-ghost">{l.icon} {l.label}</a>
                       ))}
@@ -1314,46 +1137,19 @@ function Projects() {
         </div>
       </div>
       <style>{`
-        @media(max-width:1024px){
-          .project-card > div { grid-template-columns: 220px 1fr !important; }
-        }
+        @media(max-width:1024px){ .project-card > div { grid-template-columns: 220px 1fr !important; } }
         @media(max-width:768px){
           .project-card > div { grid-template-columns: 1fr !important; }
-          .project-card > div > div:first-child { 
-            border-right: none !important; 
-            border-bottom: 1px solid rgba(124,77,255,0.18); 
-            border-radius: 16px 16px 0 0 !important;
-            padding: 24px !important;
-          }
-          .project-card > div > div:last-child {
-            padding: 24px !important;
-          }
+          .project-card > div > div:first-child { border-right: none !important; border-bottom: 1px solid rgba(124,77,255,0.18); border-radius: 16px 16px 0 0 !important; padding: 24px !important; }
+          .project-card > div > div:last-child { padding: 24px !important; }
           #projects h2{font-size:clamp(24px, 5vw, 36px)!important;}
         }
         @media(max-width:480px){
           #projects .section{padding:48px 14px;}
-          .project-card > div > div:first-child { 
-            padding: 20px 16px !important;
-          }
-          .project-card > div > div:last-child {
-            padding: 20px 16px !important;
-          }
-          .project-card > div > div:first-child > div:first-child { font-size: 36px; margin-bottom: 10px; }
-          .project-card > div > div:first-child > div:nth-child(2) { font-size: 18px; }
-          .project-card > div > div:first-child > div:nth-child(3) { font-size: 10px; }
-          .project-card > div > div:last-child > p { font-size: 13px !important; }
-          .project-card > div > div:last-child > div:nth-child(2) > div { 
-            grid-template-columns: 1fr !important; 
-            gap: 4px 0 !important;
-          }
-          .project-card > div > div:last-child > div:last-child { 
-            flex-direction: column; 
-            gap: 8px;
-          }
-          .project-card > div > div:last-child > div:last-child > a { 
-            width: 100%; 
-            justify-content: center;
-          }
+          .project-card > div > div:first-child { padding: 20px 16px !important; }
+          .project-card > div > div:last-child { padding: 20px 16px !important; }
+          .project-card > div > div:last-child > div:last-child { flex-direction: column; gap: 8px; }
+          .project-card > div > div:last-child > div:last-child > a { width: 100%; justify-content: center; }
         }
       `}</style>
     </section>
@@ -1361,7 +1157,7 @@ function Projects() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   EDUCATION / JOURNEY SECTION
+   EDUCATION SECTION
 ═══════════════════════════════════════════════════════════ */
 function Education() {
   useReveal();
@@ -1381,7 +1177,6 @@ function Education() {
       school: "Shree Ekveera Vidyalaya",
       period: "Completed 2021",
       score: "91.60%",
-      scoreLabel: "Score",
       icon: "🎓",
       status: "done",
       color: "#5c6bc0",
@@ -1391,7 +1186,6 @@ function Education() {
       school: "KES Shroff College, Mumbai",
       period: "2021 – 2023",
       score: "84.83%",
-      scoreLabel: "Score",
       icon: "📚",
       status: "done",
       color: "#7c4dff",
@@ -1422,19 +1216,16 @@ function Education() {
         </div>
 
         <div style={{ position: "relative", paddingLeft: 36 }}>
-          {/* Timeline line */}
           <div style={{ position: "absolute", left: 9, top: 8, bottom: 8, width: 2, background: "linear-gradient(to bottom, var(--violet), rgba(124,77,255,0.15))", borderRadius: 2 }} />
 
           <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
             {education.map((e, i) => (
               <div key={i} className={`reveal reveal-delay-${i + 1}`} style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
-                {/* Dot */}
                 <div style={{ position: "relative", flexShrink: 0, marginTop: 5 }}>
                   <div className={`timeline-dot ${e.status === "current" ? "active" : ""}`}
                     style={{ background: e.status === "current" ? e.color : e.color + "bb", boxShadow: `0 0 10px ${e.color}` }} />
                 </div>
 
-                {/* Card */}
                 <div style={{
                   flex: 1,
                   background: e.status === "current" ? "rgba(124,77,255,0.07)" : "rgba(255,255,255,0.02)",
@@ -1462,39 +1253,29 @@ function Education() {
                     </div>
                   </div>
 
-                  {/* CGPI Table for BSc IT */}
                   {e.cgpi && (
                     <div style={{ marginTop: 18 }}>
                       <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--text3)", marginBottom: 12, letterSpacing: "0.12em" }}>SEMESTER-WISE CGPI</div>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
                         {cgpiData.map((s) => (
                           <div key={s.sem} style={{
-                            background: s.cgpi === null ? "rgba(255,255,255,0.02)" : "rgba(124,77,255,0.08)",
+                            background: "rgba(124,77,255,0.08)",
                             border: `1px solid ${s.cgpi === 10 ? "rgba(124,77,255,0.5)" : "rgba(124,77,255,0.12)"}`,
                             borderRadius: 9,
                             padding: "10px 14px",
                             textAlign: "center",
                           }}>
                             <div style={{ fontFamily: "var(--mono)", fontSize: 9.5, color: "var(--text3)", marginBottom: 6, letterSpacing: "0.08em" }}>{s.sem}</div>
-                            {s.cgpi !== null ? (
-                              <>
-                                <div style={{ fontFamily: "var(--sans)", fontWeight: 800, fontSize: 18, color: s.cgpi === 10 ? "#a78bfa" : "var(--text)", letterSpacing: "-0.01em" }}>{s.cgpi.toFixed(2)}</div>
-                                {s.cgpi === 10 && <div style={{ fontSize: 9, color: "#a78bfa", marginTop: 2, fontFamily: "var(--mono)" }}>PERFECT</div>}
-                              </>
-                            ) : (
-                              <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--text3)", marginTop: 4 }}>Awaited</div>
-                            )}
-                            {/* Mini CGPI bar */}
-                            {s.cgpi !== null && (
-                              <div style={{ height: 3, background: "rgba(255,255,255,0.05)", borderRadius: 3, marginTop: 8, overflow: "hidden" }}>
-                                <div className="cgpi-bar" style={{
-                                  height: "100%",
-                                  width: `${(s.cgpi / 10) * 100}%`,
-                                  background: s.cgpi === 10 ? "linear-gradient(90deg, #a78bfa, #7c4dff)" : "var(--violet)",
-                                  borderRadius: 3,
-                                }} />
-                              </div>
-                            )}
+                            <div style={{ fontFamily: "var(--sans)", fontWeight: 800, fontSize: 18, color: s.cgpi === 10 ? "#a78bfa" : "var(--text)", letterSpacing: "-0.01em" }}>{s.cgpi.toFixed(2)}</div>
+                            {s.cgpi === 10 && <div style={{ fontSize: 9, color: "#a78bfa", marginTop: 2, fontFamily: "var(--mono)" }}>PERFECT</div>}
+                            <div style={{ height: 3, background: "rgba(255,255,255,0.05)", borderRadius: 3, marginTop: 8, overflow: "hidden" }}>
+                              <div className="cgpi-bar" style={{
+                                height: "100%",
+                                width: `${(s.cgpi / 10) * 100}%`,
+                                background: s.cgpi === 10 ? "linear-gradient(90deg, #a78bfa, #7c4dff)" : "var(--violet)",
+                                borderRadius: 3,
+                              }} />
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -1509,121 +1290,21 @@ function Education() {
           </div>
         </div>
       </div>
-      <style>{`
-        @media(max-width:768px){
-          #education .section{padding:60px 16px;}
-          #education h2{font-size:clamp(24px, 5vw, 36px)!important;}
-          #education > .section > div > div{padding-left:24px;}
-          #education > .section > div > div > div > div:first-child > div > div > div:nth-child(2) > div:last-child{flex-direction:column;align-items:flex-start;gap:8px;}
-          #education .cgpi-bar{animation:barGrow 1.2s ease both;}
-        }
-        @media(max-width:600px){
-          #education > .section > div{padding-left:20px;}
-          #education > .section > div > div > div:first-child > div:first-child{gap:10px;}
-          #education > .section > div > div > div:first-child > div:first-child > span{font-size:20px;}
-          #education > .section > div > div > div:first-child > div:first-child > div > div:first-child{font-size:14px;}
-          #education > .section > div > div > div:first-child > div:first-child > div > div:last-child{font-size:11px;}
-          #education > .section > div > div > div > div:first-child > div > div > div:nth-child(2) > div:first-child{font-size:10px;}
-          #education > .section > div > div > div > div:first-child > div > div > div:nth-child(2) > div:last-child > span:first-child{font-size:10px;}
-          #education > .section > div > div > div > div {
-            padding: 16px 14px !important;
-            margin-bottom: 8px;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > div > div {
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 6px !important;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div {
-            padding: 8px 10px !important;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div > div:first-child {
-            font-size: 9px !important;
-            margin-bottom: 4px;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div > div:nth-child(2) {
-            font-size: 16px !important;
-            margin-bottom: 2px;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > p {
-            font-size: 12px !important;
-            margin-top: 10px;
-            line-height: 1.5;
-          }
-        }
-        @media(max-width:480px){
-          #education .section{padding:48px 14px;}
-          #education > .section > div{padding-left:16px;}
-          #education > .section > div > div > div:first-child > div:first-child > div{gap:8px;}
-          #education > .section > div > div > div > div{padding:14px 12px;}
-          #education > .section > div > div > div > div > div:first-child{flex-direction:column;align-items:flex-start;gap:8px;}
-          #education > .section > div > div > div > div > div:first-child > div {
-            gap: 8px;
-          }
-          #education > .section > div > div > div > div > div:first-child > div > div:first-child {
-            font-size: 14px !important;
-            margin-bottom: 2px;
-          }
-          #education > .section > div > div > div > div > div:first-child > div > div:last-child {
-            font-size: 10px !important;
-          }
-          #education > .section > div > div > div > div > div:first-child > div:last-child {
-            gap: 2px;
-            text-align: left;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > div > div {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 6px !important;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div {
-            padding: 8px 10px !important;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div > div:first-child {
-            font-size: 8px !important;
-            margin-bottom: 3px;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > div > div > div > div:nth-child(2) {
-            font-size: 14px !important;
-            margin-bottom: 1px;
-          }
-          #education > .section > div > div > div > div > div:nth-child(3) > p {
-            font-size: 11px !important;
-            margin-top: 8px;
-            line-height: 1.4;
-          }
-        }
-      `}</style>
     </section>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════
    CONTACT SECTION
-   Uses EmailJS — install: npm install @emailjs/browser
-   Then configure the three constants below.
 ═══════════════════════════════════════════════════════════ */
-
-/*
-  ╔══════════════════════════════════════════════╗
-  ║  EMAILJS CONFIGURATION — FILL THESE IN       ║
-  ║                                              ║
-  ║  1. Go to https://emailjs.com                ║
-  ║  2. Create a free account                    ║
-  ║  3. Add an Email Service (Gmail, etc.)       ║
-  ║  4. Create an Email Template                 ║
-  ║     Template variables needed:               ║
-  ║       {{from_name}}, {{from_email}},         ║
-  ║       {{message}}                            ║
-  ║  5. Copy your IDs below                      ║
-  ╚══════════════════════════════════════════════╝
-*/
-const EMAILJS_SERVICE_ID  = "service_ix9rwi8";   // e.g. "service_abc123"
-const EMAILJS_TEMPLATE_ID = "template_bgsoe7g";  // e.g. "template_xyz789"
-const EMAILJS_PUBLIC_KEY  = "RlJ_iMP8KQMdXFfVQ";   // e.g. "aBcDeFgHiJkLmNoP"
+const EMAILJS_SERVICE_ID  = "service_ix9rwi8";
+const EMAILJS_TEMPLATE_ID = "template_bgsoe7g";
+const EMAILJS_PUBLIC_KEY  = "RlJ_iMP8KQMdXFfVQ";
 
 function Contact() {
   useReveal();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [status, setStatus] = useState("idle");
 
   useEffect(() => {
     emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -1632,24 +1313,13 @@ function Contact() {
   const handleSubmit = async () => {
     if (!form.name || !form.email || !form.message) return;
     setStatus("sending");
-
     try {
-      /*
-        EmailJS send — requires @emailjs/browser installed:
-          npm install @emailjs/browser
-        Then uncomment the import at the top of this file:
-          import emailjs from '@emailjs/browser';
-        And replace the mock below with the real call.
-      */
-
-      // ── REAL EMAILJS CALL ──
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         { from_name: form.name, from_email: form.email, message: form.message },
         EMAILJS_PUBLIC_KEY
       );
-
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 4000);
@@ -1688,8 +1358,9 @@ function Contact() {
         </svg>
       ),
       label: "Phone",
-      value: "[8850752240]",
-      url: "tel:[8850752240]",
+      /* ✅ CHANGE 5: Fixed phone number — removed square brackets */
+      value: "8850752240",
+      url: "tel:+918850752240",
     },
   ];
 
@@ -1707,7 +1378,6 @@ function Contact() {
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 44, alignItems: "start" }}>
-          {/* Left: info */}
           <div>
             <h3 className="reveal" style={{ fontFamily: "var(--sans)", fontSize: 22, fontWeight: 700, marginBottom: 14, letterSpacing: "-0.01em" }}>Get In Touch</h3>
             <p className="reveal" style={{ color: "var(--text2)", lineHeight: 1.78, fontSize: 14.5, marginBottom: 32 }}>
@@ -1732,7 +1402,6 @@ function Contact() {
             ))}
           </div>
 
-          {/* Right: form */}
           <div className="reveal">
             <TiltCard>
               <div style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(124,77,255,0.13)", borderRadius: 16, padding: 30 }}>
@@ -1746,7 +1415,7 @@ function Contact() {
                   <div style={{ textAlign: "center", padding: "20px 0" }}>
                     <div style={{ fontSize: 40, marginBottom: 10 }}>⚠️</div>
                     <div style={{ fontFamily: "var(--sans)", fontSize: 16, fontWeight: 700, marginBottom: 6, color: "#e91e8c" }}>Something went wrong</div>
-                    <div style={{ color: "var(--text3)", fontSize: 13 }}>Please check your EmailJS config or try again.</div>
+                    <div style={{ color: "var(--text3)", fontSize: 13 }}>Please try again or email me directly.</div>
                   </div>
                 ) : (
                   <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -1762,13 +1431,11 @@ function Contact() {
                       <label style={{ display: "block", fontFamily: "var(--mono)", fontSize: 10, color: "var(--text3)", marginBottom: 7, letterSpacing: "0.12em" }}>MESSAGE</label>
                       <textarea className="contact-input" rows={5} placeholder="Tell me about your opportunity or project..." value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
                     </div>
+                    {/* ✅ CHANGE 3: Removed EmailJS debug footer line completely */}
                     <button className="btn-primary" onClick={handleSubmit} disabled={status === "sending"}
                       style={{ width: "100%", justifyContent: "center", opacity: status === "sending" ? 0.7 : 1, cursor: status === "sending" ? "wait" : "pointer" }}>
                       {status === "sending" ? "Sending…" : "Send Message →"}
                     </button>
-                    <p style={{ fontFamily: "var(--mono)", fontSize: 9.5, color: "var(--text3)", textAlign: "center" }}>
-                      Powered by EmailJS · configure EMAILJS_* constants in App.js
-                    </p>
                   </div>
                 )}
               </div>
@@ -1777,9 +1444,7 @@ function Contact() {
         </div>
       </div>
       <style>{`
-        @media(max-width:1024px){
-          #contact .section > div:last-child{grid-template-columns:1fr!important;gap:32px!important;}
-        }
+        @media(max-width:1024px){ #contact .section > div:last-child{grid-template-columns:1fr!important;gap:32px!important;} }
         @media(max-width:768px){
           #contact .section{padding:60px 16px;}
           #contact .section > div:last-child{grid-template-columns:1fr!important;gap:28px!important;}
@@ -1789,10 +1454,6 @@ function Contact() {
         @media(max-width:480px){
           #contact .section{padding:48px 14px;}
           #contact .section > div:last-child{gap:20px!important;}
-          #contact .section > div:last-child > div:first-child > a{width:100%;}
-          #contact .section > div:last-child > div:last-child > div > div > input,
-          #contact .section > div:last-child > div:last-child > div > div > textarea{font-size:14px;}
-          #contact .section > div:last-child > div:last-child > div > button{font-size:13px;}
         }
       `}</style>
     </section>
@@ -1811,7 +1472,8 @@ function Footer() {
             <div style={{ fontFamily: "var(--sans)", fontSize: 17, fontWeight: 800, color: "var(--text)", marginBottom: 3, letterSpacing: "-0.01em" }}>
               Mitali<span style={{ color: "var(--violet-light)" }}>.</span>
             </div>
-            <div style={{ fontFamily: "var(--mono)", fontSize: 10.5, color: "var(--text3)" }}>Aspiring Full-Stack Developer</div>
+            {/* ✅ CHANGE 1 (footer): Removed "Aspiring" */}
+            <div style={{ fontFamily: "var(--mono)", fontSize: 10.5, color: "var(--text3)" }}>Full-Stack Developer</div>
           </div>
 
           <div style={{ display: "flex", gap: 10 }}>
@@ -1833,17 +1495,8 @@ function Footer() {
         </div>
       </footer>
       <style>{`
-        @media (max-width: 768px) {
-          footer { padding: 28px 16px; }
-          footer > div { flex-direction: column; text-align: center; }
-          footer > div > div:last-child { order: 3; width: 100%; }
-        }
-        @media (max-width: 480px) {
-          footer { padding: 24px 14px; }
-          footer > div > div:first-child > div:first-child { font-size: 15px; }
-          footer > div > div:first-child > div:last-child { font-size: 10px; }
-          footer > div > div:last-child { font-size: 10px; }
-        }
+        @media (max-width: 768px) { footer { padding: 28px 16px; } footer > div { flex-direction: column; text-align: center; } }
+        @media (max-width: 480px) { footer { padding: 24px 14px; } }
       `}</style>
     </>
   );
@@ -1859,10 +1512,7 @@ export default function App() {
     const style = document.createElement("style");
     style.textContent = GLOBAL_CSS;
     document.head.appendChild(style);
-
-    // Update page title
     document.title = "Mitali Khamkar — Full-Stack Developer";
-
     const t = setTimeout(() => setLoaded(true), 1600);
     return () => { clearTimeout(t); document.head.removeChild(style); };
   }, []);
