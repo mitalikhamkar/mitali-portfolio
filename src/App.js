@@ -691,15 +691,16 @@ function DeveloperPhoto() {
       src={src}
       alt="Mitali Khamkar — Full-Stack Developer"
       style={{
-        width: "100%",
-        height: "100%",
+        width: "140%",
+        height: "140%",
         objectFit: "cover",
-        objectPosition: "center top",
-        borderRadius: "50%",
-        maxWidth: "100%",
+        objectPosition: "center 15%",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -38%)",
       }}
       onError={() => {
-        // Try .jpg if .jpeg fails
         if (src === "/mitali-photo.jpeg") setSrc("/mitali-photo.jpg");
       }}
       loading="eager"
