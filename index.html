@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitali Khamkar — Frontend Developer</title>
+    <meta name="description" content="Mitali Khamkar — BSc IT student and frontend developer building modern digital experiences with React.js and the JavaScript ecosystem.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════
+         CINEMATIC INTRO
+    ═══════════════════════════════════════ -->
+    <div id="intro" class="intro">
+        <div class="intro-inner">
+            <div class="intro-line intro-line-1">
+                <span class="intro-word">Mitali</span>
+                <span class="intro-word intro-serif">Shivaji</span>
+                <span class="intro-word">Khamkar</span>
+            </div>
+            <div class="intro-line intro-line-2">
+                <span class="intro-role">Frontend Developer</span>
+            </div>
+            <div class="intro-line intro-line-3">
+                <span class="intro-tagline">Building modern digital experiences.</span>
+            </div>
+            <div class="intro-bar"><div class="intro-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+        <a href="#hero" class="nav-logo">MK<span class="dot">.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#journey">Journey</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Let's Talk</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#about" class="mob-link">About</a>
+        <a href="#mission" class="mob-link">Mission</a>
+        <a href="#skills" class="mob-link">Skills</a>
+        <a href="#projects" class="mob-link">Projects</a>
+        <a href="#journey" class="mob-link">Journey</a>
+        <a href="#contact" class="mob-link mob-cta">Let's Talk</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+    <section id="hero" class="hero">
+        <div class="hero-bg">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="hero-content reveal-up">
+            <div class="hero-eyebrow">
+                <span class="eyebrow-dot"></span>
+                <span>Available for opportunities · Mumbai, India</span>
+            </div>
+            <h1 class="hero-name">
+                <span class="hero-hi">Hi, I'm</span>
+                <span class="hero-title-name">Mitali.</span>
+            </h1>
+            <h2 class="hero-role">Frontend <em>Developer.</em></h2>
+            <p class="hero-desc">Building modern web applications that are fast, intuitive, and impactful — from 3D fashion-tech experiences to interactive learning tools.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                    <span>View Projects</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+            </div>
+        </div>
+        <div class="hero-visual reveal-up reveal-delay">
+            <div class="hero-card glass-card">
+                <div class="hc-top">
+                    <div class="hc-avatar">
+                        <img src="assets/avatar.png" alt="Mitali Khamkar" onerror="this.src='https://placehold.co/120x120/0f0f0f/3b82f6?text=MK'">
+                    </div>
+                    <div class="hc-identity">
+                        <span class="hc-name">Mitali Khamkar</span>
+                        <span class="hc-title">Frontend Developer</span>
+                    </div>
+                </div>
+                <div class="hc-stats">
+                    <div class="hc-stat">
+                        <span class="hc-stat-num">9.9</span>
+                        <span class="hc-stat-label">CGPA</span>
+                    </div>
+                    <div class="hc-divider"></div>
+                    <div class="hc-stat">
+                        <span class="hc-stat-num">4+</span>
+                        <span class="hc-stat-label">Projects</span>
+                    </div>
+                    <div class="hc-divider"></div>
+                    <div class="hc-stat">
+                        <span class="hc-stat-num">3</span>
+                        <span class="hc-stat-label">Certs</span>
+                    </div>
+                </div>
+                <div class="hc-stack">
+                    <span class="hc-tag">React.js</span>
+                    <span class="hc-tag">React Native</span>
+                    <span class="hc-tag">Node.js</span>
+                    <span class="hc-tag">MongoDB</span>
+                </div>
+                <div class="hc-status">
+                    <span class="status-dot"></span>
+                    Open to work
+                </div>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+            <span class="scroll-text">Scroll</span>
+            <div class="scroll-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+        </a>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ABOUT
+    ═══════════════════════════════════════ -->
+    <section id="about" class="about section-anim">
+        <div class="container">
+            <div class="section-label">01 / About</div>
+            <div class="about-layout">
+                <div class="about-left">
+                    <h2 class="section-heading">The Developer<br><em>Behind The Code</em></h2>
+                </div>
+                <div class="about-right">
+                    <p class="about-lead">I'm Mitali — a final-year BSc IT student at D.G. Ruparel College, Mumbai, with a 9.9 CGPA and a genuine passion for building things that sit at the intersection of functionality and design.</p>
+                    <p class="about-body">My foundation is in C, C++, HTML, CSS, and Python. I'm actively expanding into the JavaScript ecosystem — React.js, React Native, Node.js, and MongoDB — with real projects driving that learning, not just tutorials.</p>
+                    <p class="about-body">Whether that's an interactive web game, a restaurant website with a thoughtful UI, or a mobile app that lets users dress digital avatars in 3D — I build things that reach real users.</p>
+                    <p class="about-body">I'm looking for opportunities where I can contribute meaningfully, keep growing, and work on products people actually love.</p>
+                    <div class="about-cta-row">
+                        <a href="https://github.com/mitalikhamkar" target="_blank" class="about-link">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/mitali-khamkar" target="_blank" class="about-link">
+                            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CURRENT MISSION
+    ═══════════════════════════════════════ -->
+    <section id="mission" class="mission section-anim">
+        <div class="container">
+            <div class="section-label">02 / Current Mission</div>
+            <div class="mission-header">
+                <h2 class="section-heading">Currently<br><em>Focused On</em></h2>
+                <div class="mission-status">
+                    <span class="mission-dot"></span>
+                    <span>Seeking Frontend Development Opportunities</span>
+                </div>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mc-icon"><i class="fa-brands fa-react"></i></div>
+                    <h3>React Development</h3>
+                    <p>Building production-grade React applications with hooks, component architecture, and API integration.</p>
+                    <div class="mc-bar"><div class="mc-fill" style="width: 75%"></div></div>
+                </div>
+                <div class="mission-card">
+                    <div class="mc-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Full-Stack Development</h3>
+                    <p>Bridging frontend with Node.js, Express, and MongoDB backends for complete application delivery.</p>
+                    <div class="mc-bar"><div class="mc-fill" style="width: 60%"></div></div>
+                </div>
+                <div class="mission-card">
+                    <div class="mc-icon"><i class="fa-solid fa-sitemap"></i></div>
+                    <h3>System Design Fundamentals</h3>
+                    <p>Understanding scalable architecture patterns, API design, and modular system thinking.</p>
+                    <div class="mc-bar"><div class="mc-fill" style="width: 45%"></div></div>
+                </div>
+                <div class="mission-card">
+                    <div class="mc-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>DSA Preparation</h3>
+                    <p>Sharpening algorithmic thinking with data structures, solving problems in JavaScript.</p>
+                    <div class="mc-bar"><div class="mc-fill" style="width: 50%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SKILLS
+    ═══════════════════════════════════════ -->
+    <section id="skills" class="skills section-anim">
+        <div class="container">
+            <div class="section-label">03 / Skills</div>
+            <h2 class="section-heading">Technical<br><em>Toolkit</em></h2>
+            <div class="skills-grid">
+
+                <div class="skill-group sg-featured">
+                    <div class="sg-header">
+                        <span class="sg-icon"><i class="fa-solid fa-fire-flame-curved"></i></span>
+                        <h3>Currently Learning</h3>
+                        <span class="sg-badge">Active</span>
+                    </div>
+                    <div class="sg-tags">
+                        <span class="stag stag-hot"><i class="fa-brands fa-react"></i> React.js</span>
+                        <span class="stag stag-hot"><i class="fa-brands fa-react"></i> React Native</span>
+                        <span class="stag stag-hot"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                        <span class="stag stag-hot">Express.js</span>
+                        <span class="stag stag-hot"><i class="fa-solid fa-leaf"></i> MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="sg-header">
+                        <span class="sg-icon"><i class="fa-solid fa-terminal"></i></span>
+                        <h3>Languages</h3>
+                    </div>
+                    <div class="sg-tags">
+                        <span class="stag"><i class="fa-brands fa-js"></i> JavaScript</span>
+                        <span class="stag"><i class="fa-brands fa-python"></i> Python</span>
+                        <span class="stag">C++</span>
+                        <span class="stag">C</span>
+                        <span class="stag"><i class="fa-brands fa-html5"></i> HTML5</span>
+                        <span class="stag"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="sg-header">
+                        <span class="sg-icon"><i class="fa-solid fa-wrench"></i></span>
+                        <h3>Tools</h3>
+                    </div>
+                    <div class="sg-tags">
+                        <span class="stag"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+                        <span class="stag">VS Code</span>
+                        <span class="stag">Blender</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PROJECTS
+    ═══════════════════════════════════════ -->
+    <section id="projects" class="projects section-anim">
+        <div class="container">
+            <div class="section-label">04 / Projects</div>
+            <h2 class="section-heading">Featured<br><em>Work</em></h2>
+
+            <!-- Project 1: Glamware (Featured) -->
+            <div class="project-feature">
+                <div class="pf-visual">
+                    <div class="pf-img-wrap">
+                        <img src="assets/glamware.png" alt="Glamware App" onerror="this.src='https://placehold.co/700x500/0f0f0f/3b82f6?text=Glamware'">
+                    </div>
+                    <div class="pf-badge">Major Project</div>
+                </div>
+                <div class="pf-info">
+                    <span class="proj-num">01</span>
+                    <h3>Glamware</h3>
+                    <p>A fashion-tech mobile application where users create customizable avatars and experiment with virtual outfits. Integrates 3D models built in Blender into a React Native interface, with a Node.js and MongoDB backend.</p>
+                    <div class="proj-tech">
+                        <span>React Native</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                        <span>Blender</span>
+                        <span>Express.js</span>
+                    </div>
+                    <div class="proj-links">
+                        <a href="https://github.com/mitalikhamkar" target="_blank" class="plink plink-ghost">
+                            <i class="fa-brands fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Culina -->
+            <div class="project-feature project-feature-alt">
+                <div class="pf-visual">
+                    <div class="pf-img-wrap">
+                        <img src="assets/culina.png" alt="Culina" onerror="this.src='https://placehold.co/700x500/0f0f0f/60a5fa?text=Culina'">
+                    </div>
+                    <div class="pf-badge pf-badge-blue">Ongoing</div>
+                </div>
+                <div class="pf-info">
+                    <span class="proj-num">02</span>
+                    <h3>Culina</h3>
+                    <p>A restaurant website focused on clean UI/UX and structured design. Implements modern aesthetic principles for a seamless browsing experience — exploring React.js for an upgraded interactive version.</p>
+                    <div class="proj-tech">
+                        <span>React.js</span>
+                        <span>HTML/CSS</span>
+                        <span>JavaScript</span>
+                        <span>UI/UX Design</span>
+                    </div>
+                    <div class="proj-links">
+                        <a href="https://github.com/mitalikhamkar" target="_blank" class="plink plink-ghost">
+                            <i class="fa-brands fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Grid (smaller) -->
+            <div class="projects-minor-grid">
+                <div class="minor-card">
+                    <div class="mc-top">
+                        <span class="mc-badge mc-badge-edu">Educational</span>
+                        <div class="mc-links">
+                            <a href="https://github.com/mitalikhamkar" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Fraction Learning Game</h3>
+                    <p>An interactive web game built to help students understand fractions visually. Features gamified elements to boost engagement and retention.</p>
+                    <div class="mc-tech">
+                        <span>JavaScript</span>
+                        <span>Interactive UI</span>
+                    </div>
+                </div>
+                <div class="minor-card">
+                    <div class="mc-top">
+                        <span class="mc-badge mc-badge-api">Backend API</span>
+                        <div class="mc-links">
+                            <a href="https://github.com/mitalikhamkar" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Lead Workflow System</h3>
+                    <p>A backend system demonstrating validation, classification, and action triggers using modular architecture.</p>
+                    <div class="mc-tech">
+                        <span>Node.js</span>
+                        <span>Modular Architecture</span>
+                        <span>API Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         JOURNEY
+    ═══════════════════════════════════════ -->
+    <section id="journey" class="journey section-anim">
+        <div class="container">
+            <div class="section-label">05 / Journey</div>
+            <h2 class="section-heading">My<br><em>Story</em></h2>
+            <div class="journey-layout">
+                <div class="journey-timeline">
+                    <div class="jt-item jt-active">
+                        <div class="jt-marker">
+                            <div class="jt-dot"></div>
+                            <div class="jt-line"></div>
+                        </div>
+                        <div class="jt-content glass-card">
+                            <span class="jt-year">2026</span>
+                            <h3>BSc Information Technology</h3>
+                            <p class="jt-place">D.G. Ruparel College, Mumbai</p>
+                            <p>Graduating with a <strong>9.9 CGPA</strong> — building real-world full-stack projects throughout the degree, with a focus on the JavaScript ecosystem.</p>
+                            <div class="jt-tags">
+                                <span>React.js</span>
+                                <span>Node.js</span>
+                                <span>MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="jt-item">
+                        <div class="jt-marker">
+                            <div class="jt-dot"></div>
+                            <div class="jt-line"></div>
+                        </div>
+                        <div class="jt-content glass-card">
+                            <span class="jt-year">2023</span>
+                            <h3>Higher Secondary Certificate (HSC)</h3>
+                            <p>Scored <strong>84.83%</strong> — building a strong foundation in science and mathematics that informs logical problem-solving in development.</p>
+                        </div>
+                    </div>
+                    <div class="jt-item">
+                        <div class="jt-marker">
+                            <div class="jt-dot"></div>
+                        </div>
+                        <div class="jt-content glass-card">
+                            <span class="jt-year">2021</span>
+                            <h3>Secondary School Certificate (SSC)</h3>
+                            <p>Scored <strong>91.60%</strong> — demonstrated early aptitude for academics and analytical thinking.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certifications">
+                    <h3 class="cert-heading">Certifications</h3>
+                    <div class="cert-cards">
+                        <div class="cert-card glass-card">
+                            <div class="cc-icon"><i class="fa-solid fa-c"></i></div>
+                            <div class="cc-info">
+                                <span class="cc-name">C Programming</span>
+                                <span class="cc-source">Certification</span>
+                            </div>
+                            <i class="fa-solid fa-check-circle cc-check"></i>
+                        </div>
+                        <div class="cert-card glass-card">
+                            <div class="cc-icon"><i class="fa-brands fa-cuttlefish"></i></div>
+                            <div class="cc-info">
+                                <span class="cc-name">C++ Programming</span>
+                                <span class="cc-source">Certification</span>
+                            </div>
+                            <i class="fa-solid fa-check-circle cc-check"></i>
+                        </div>
+                        <div class="cert-card glass-card">
+                            <div class="cc-icon"><i class="fa-solid fa-robot"></i></div>
+                            <div class="cc-info">
+                                <span class="cc-name">AI for Beginners</span>
+                                <span class="cc-source">Certification</span>
+                            </div>
+                            <i class="fa-solid fa-check-circle cc-check"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CONTACT
+    ═══════════════════════════════════════ -->
+    <section id="contact" class="contact section-anim">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="contact-left">
+                    <div class="section-label">06 / Contact</div>
+                    <h2 class="section-heading contact-heading">Let's Build<br>Something<br><em>Amazing Together.</em></h2>
+                    <p class="contact-sub">I'm currently available for internships and opportunities. Whether you have a question or want to say hi — I'd love to hear from you.</p>
+                    <div class="contact-status">
+                        <span class="status-dot"></span>
+                        Available for opportunities
+                    </div>
+                    <div class="contact-socials">
+                        <a href="https://github.com/mitalikhamkar" target="_blank" class="csoc">
+                            <i class="fa-brands fa-github"></i>
+                            <span>mitalikhamkar</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square csoc-arrow"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mitali-khamkar" target="_blank" class="csoc">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <span>mitali-khamkar</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square csoc-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-bg-text" aria-hidden="true">Let's Talk</div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <span class="footer-logo">MK<span class="dot">.</span></span>
+            <p>© 2026 Mitali Khamkar — Designed & Built with passion.</p>
+            <a href="#hero" class="footer-top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
